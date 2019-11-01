@@ -6,6 +6,14 @@ let app = express();
 app.use(bodyParser.json());
 app.use(router);
 
+router.get('/cabecera', (req, res) => {
+    console.log(req.headers);
+    res.header({
+        "custom-header": "Nuestro valor personalizado"
+    });
+    res.send('Información de la cabecera');
+});
+
 router.get('/', (req, res) => {
     console.log(req.query);
     console.log(req.body);
