@@ -1,9 +1,15 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const router = express.Router();
 
 let app = express();
+app.use(bodyParser.json());
+app.use(router);
 
-app.use('/', (req, res) => {
-    res.send('Hola');
+router.get('/', (req, res) => {
+    console.log(req.query);
+    console.log(req.body);
+    res.send('Hola desde get we');
 });
 
 app.listen(3000);
