@@ -9,29 +9,14 @@ app.use(bodyParser.json());
 app.use(router);
 
 router.get('/message', (req, res) => {
-    response.success(req, res, 'Lista de mensajes');
-})
-
-router.get('/cabecera', (req, res) => {
-    console.log(req.headers);
-    res.header({
-        "custom-header": "Nuestro valor personalizado"
-    });
-    res.send('Información de la cabecera');
+    if (req.query.erro == 'OK') {
+        response.error(req, res, 'Error simulado');
+    } else {
+        response.success(req, res, 'Creado correctamente', 201);
+    }
 });
 
-router.post('/user', (req, res) => {
-    res.status(200).send({
-        error: '',
-        body: 'Creado correctamente'
-    });
-});
-
-router.get('/', (req, res) => {
-    console.log(req.query);
-    console.log(req.body);
-    res.send('Hola desde get we');
-});
+app.use('/app', express.static('public'));
 
 app.listen(3000);
 console.log('La aplicación está escuchando en http://localhost:3000');
