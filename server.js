@@ -9,8 +9,8 @@ app.use(bodyParser.json());
 app.use(router);
 
 router.get('/message', (req, res) => {
-    if (req.query.erro == 'OK') {
-        response.error(req, res, 'Error simulado');
+    if (req.query.error == 'OK') {
+        response.error(req, res, 'Error inesperado', 500, 'Es solo una simulación de los errores');
     } else {
         response.success(req, res, 'Creado correctamente', 201);
     }
