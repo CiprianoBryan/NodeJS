@@ -4,8 +4,13 @@ const controller = require('./controller');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    console.log('Se llamo al get');
-    response.success(req, res, 'Lista de mensajes');
+    controller.getMessages()
+        .then(list => {
+            response.success(req, res, list, 200);
+        })
+        .catch(e => {
+            response.error(req, res, 'Unexpected Error', 500, e);
+        });
 });
 
 router.post('/', (req, res) => {
