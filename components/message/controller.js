@@ -12,17 +12,18 @@ function addMessage(user, message) {
             message: message,
             date: new Date()
         };
-        store.addMessage(fullMessage);
+        store.add(fullMessage);
         resolve(fullMessage);
     });
 }
 
 function getMessages() {
     return new Promise((resolve, reject) => {
-        resolve.getMessages();
+        store.list();
     });
 }
 
 module.exports = {
     addMessage,
+    getMessages
 };
