@@ -1,10 +1,9 @@
 const db = require('mongoose');
 const Model = require('./model');
 
-const pathCredential = '';
-
 db.Promise = global.Promise;
-db.connect(pathCredential, {
+db.connect('mongodb+srv://admin:admin@platzi-kpj7c.mongodb.net/test?retryWrites=true&w=majority', {
+    useUnifiedTopology: true,
     useNewUrlParser: true
 });
 
