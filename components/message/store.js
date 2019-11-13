@@ -14,8 +14,14 @@ addMessage = message => {
     myMessage.save();
 };
 
-getMessages = async () => {
-    const messages  = await Model.find();
+getMessages = async (filterUser) => {
+    let filter = {};
+    if (filterUser !== null) {
+        filter = {
+            user: filterUser
+        }
+    }
+    const messages  = await Model.find(filter);
     return messages;
 };
 
